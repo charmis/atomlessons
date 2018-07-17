@@ -3,13 +3,13 @@
       <ul class="list-group">
           <li class="list-group-item">
             <div class="row">
-              <div class="col-md-2"><img [src]="lesson.subjectPhotoUrl" alt=""></div>
-              <div class="col-md-4">
+              <div class="col-sm-1"><img [src]="lesson.subjectPhotoUrl" alt=""></div>
+              <div class="col-sm-6">
                 <h5>{{lesson.title}}</h5>
                 <div>{{lesson.description}}</div>
               </div>
-              <div class="col-md-3">{{lesson.instructorName}}</div>
-              <div class="col-md-2">{{lesson.time}}</div>
+              <div class="col-sm-3"><img [src]="lesson.instructorPhotoUrl" alt=""> {{lesson.instructorName}}</div>
+              <div class="col-sm-2">{{lesson.time | date:'short'}}</div>
             </div>
           </li>
         </ul>
