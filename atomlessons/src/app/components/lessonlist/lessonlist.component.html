@@ -1,13 +1,18 @@
 <div *ngIf="lessons$ | async as lessons; else loading">
-  lessonlist works!
-
   <div  *ngFor="let lesson of lessons" class="list-group">
-    <div class="d-flex w-100 justify-content-between">
-      <h4 class="mb-1">  {{lesson.title}}</h4>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">{{lesson.description}}}</p>
-    <small>Donec id elit non mi porta.</small>
+      <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2"><img [src]="lesson.subjectPhotoUrl" alt=""></div>
+              <div class="col-md-4">
+                <h5>{{lesson.title}}</h5>
+                <div>{{lesson.description}}</div>
+              </div>
+              <div class="col-md-3">{{lesson.instructorName}}</div>
+              <div class="col-md-2">{{lesson.time}}</div>
+            </div>
+          </li>
+        </ul>
   </div>
 </div>
 <ng-template #loading>
