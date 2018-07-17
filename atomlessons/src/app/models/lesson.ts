@@ -4,7 +4,7 @@ export class Lesson {
     InstructorName: string;
     InstructorPhotoUrl: string;
     SubjectPhotoUrl: string;
-    Time: Date
+    Time: Date;
 
     constructor(lesson: any) {
         this.Title = lesson.Title;

@@ -1,19 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
 import { LessonlistComponent } from './components/lessonlist/lessonlist.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ErrormessageComponent } from './components/errormessage/errormessage.component'
+import { ErrormessageComponent } from './components/errormessage/errormessage.component';
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent },
-  { path: "lessons", component: LessonlistComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "**", component: ErrormessageComponent }
+  { path: '', component: DashboardComponent },
+  { path: 'lessons', component: LessonlistComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', component: ErrormessageComponent }
 ];
 
 @NgModule({
