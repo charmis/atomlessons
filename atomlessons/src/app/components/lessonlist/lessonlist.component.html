@@ -1,18 +1,30 @@
-<div *ngIf="lessons$ | async as lessons; else loading">
-  <div  *ngFor="let lesson of lessons" class="list-group">
+<div *ngIf="lessons$ | async as groupedLessons; else loading">
+  <div *ngFor="let group of groupedLessons" class="list-group">
+    <div>
+      <h4><br>
+        {{group.title | date:'fullDate'}}
+      </h4>
+    </div>
+    <div *ngFor="let lsn of group.lessons" class="list-group">
       <ul class="list-group">
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-1"><img [src]="lesson.subjectPhotoUrl" alt=""></div>
-              <div class="col-sm-6">
-                <h5>{{lesson.title}}</h5>
-                <div>{{lesson.description}}</div>
-              </div>
-              <div class="col-sm-3"><img [src]="lesson.instructorPhotoUrl" alt=""> {{lesson.instructorName}}</div>
-              <div class="col-sm-2">{{lesson.time | date:'short'}}</div>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-1">
+              <img [src]="lsn.SubjectPhotoUrl" alt="Subject Photo">
             </div>
-          </li>
-        </ul>
+            <div class="col-sm-6">
+              <h5>{{lsn.Title}}</h5>
+              <div>
+                <small>{{lsn.Description}}</small>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <img [src]="lsn.InstructorPhotoUrl" alt=""> <span class="align-top">{{lsn.InstructorName}}</span></div>
+            <div class="col-sm-2">{{lsn.Time | date:'shortTime'}} - {{(lsn.LessonEndTime) | date:'shortTime'}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <ng-template #loading>
