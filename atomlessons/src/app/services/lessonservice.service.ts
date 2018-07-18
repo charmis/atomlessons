@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Lesson } from '../models/lesson';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class LessonserviceService {
@@ -21,6 +21,7 @@ export class LessonserviceService {
           });
         }
         return result;
-      }));
+      }),
+    catchError(err => Observable.throw(err)));
   }
 }

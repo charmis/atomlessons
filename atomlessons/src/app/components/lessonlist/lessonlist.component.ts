@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LessonserviceService } from '../../services/lessonservice.service';
 import { Lesson } from '../../models/lesson';
 import { Observable } from 'rxjs/Observable';
-import { groupBy, mergeMap, reduce, map, toArray } from 'rxjs/operators';
+import { groupBy, mergeMap, reduce, map, toArray, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lessonlist',
@@ -14,7 +15,7 @@ export class LessonlistComponent implements OnInit {
 
   lessons$: Observable<any>;
 
-  constructor(private lessonService: LessonserviceService) {
+  constructor(private lessonService: LessonserviceService, private router: Router) {
   }
 
   ngOnInit() {
@@ -30,14 +31,15 @@ export class LessonlistComponent implements OnInit {
         return go.pipe(reduce((acc, lesson: Lesson) => { acc.push(lesson); return acc; }, []),
           map(lessons => ({ title: go.key, lessons })));
       }),
-      toArray()
+      toArray(),
+      catchError(err => this.router.navigate(['/error']))
     );
   }
 
   getFormattedDate(courseDate) {
-    const lessonDate = new Date(courseDate);    
+    const lessonDate = new Date(courseDate);
     const year = lessonDate.getFullYear();
-    
+
     let month = (1 + lessonDate.getMonth()).toString();
     month = month.length > 1 ? month : '0' + month;
 

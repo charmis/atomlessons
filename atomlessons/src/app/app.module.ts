@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'lessons', component: LessonlistComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'error', component: ErrormessageComponent },
   { path: '**', component: ErrormessageComponent }
 ];
 
