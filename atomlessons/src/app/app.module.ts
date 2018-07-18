@@ -12,7 +12,7 @@ import { ErrormessageComponent } from './components/errormessage/errormessage.co
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'lessons', component: LessonlistComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'home', component: DashboardComponent },
   { path: 'error', component: ErrormessageComponent },
   { path: '**', component: ErrormessageComponent }
 ];
