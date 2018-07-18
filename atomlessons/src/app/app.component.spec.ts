@@ -8,8 +8,6 @@ import { LessonlistComponent } from './components/lessonlist/lessonlist.componen
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ErrormessageComponent } from './components/errormessage/errormessage.component';
 
-import { Lesson } from './models/lesson';
-
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'lessons', component: LessonlistComponent },
@@ -24,7 +22,9 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [
+        RouterModule,
+        RouterTestingModule.withRoutes(routes)],
       declarations: [
         AppComponent,
         LessonlistComponent,
