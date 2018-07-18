@@ -20,24 +20,24 @@ export class LessonlistComponent implements OnInit {
   ngOnInit() {
     this.lessons$ = this.lessonService.getLessons().pipe(
       map((s) => s.sort(function (a, b) {
-        var c = new Date(a.Time);
-        var d = new Date(b.Time);
+        const c = new Date(a.Time);
+        const d = new Date(b.Time);
         return +c - +d;
       })),
       mergeMap(val => val),
       groupBy(ls => this.getFormattedDate(ls.Time)),
       mergeMap(go => {
         return go.pipe(reduce((acc, lesson: Lesson) => { acc.push(lesson); return acc; }, []),
-          map(lessons => ({ title: go.key, lessons })))
+          map(lessons => ({ title: go.key, lessons })));
       }),
       toArray()
     );
   }
 
   getFormattedDate(courseDate) {
-    let lessonDate = new Date(courseDate);
-    
+    const lessonDate = new Date(courseDate);    
     const year = lessonDate.getFullYear();
+    
     let month = (1 + lessonDate.getMonth()).toString();
     month = month.length > 1 ? month : '0' + month;
 
